@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 1</title>
+  <style>
+
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    .row{
+        width: 20%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .column{
+        display: flex;
+        flex-direction: row;
+    }
+    
+
+    .box{
+        background-color: aqua;
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .box2{
+        background-color: white;
+        padding: 10px;
+        margin: 10px;
+    }
+    
+    
+    .color_1{
+        background-color: blue;
+    }
+    .color-pink{
+        background-color: pink;
+    }
+    .color_3{
+        background-color: darkgoldenrod;
+    }
+    .color-skyblue{
+        background-color: skyblue;
+    }
+    .color-darkpink{
+        background-color: rgb(218, 33, 64);
+    }
+    .color-darkred{
+        background-color: darkred;
+    }
+    .color_yellow{
+        background-color: yellow;
+    }
+    .color_8{
+        background-color: lightcoral;
+    }
+    .color-orange{
+        background-color: orange;
+    }
+    .color-orangered{
+        background-color: orangered;
+    }
+    .color-darkblue{
+        background-color: darkblue;
+    }
+    .color-red{
+        background-color: red;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <div class="todo-container">
+     
+      
+      <div v-for="(row, index) in 6" :key="index" class="row">
+      
+        <div v-if="index === 0 || index === 5" class="column">
+            <div v-for="(row, idx) in 9" :key="idx">
+            <div v-if="idx === 0 || idx === 8" class="box color-darkpink">
+                row,
+            </div>
+            <div v-else-if="idx > 0 || idx < 8" class="box2">
+                row,
+            </div>
+            </div>
+        </div>
+        <div v-else-if="index === 1 || index === 4" class="column">
+            <div v-for="(row, index) in 9" :key="index">
+            space,
+            </div>
+        </div>
+        <div v-else-if="index >= 1 && index <= 5 " class="column">
+            <div v-for="(row, idx) in 9" :key="idx">
+                <div v-if="idx === 2 || idx === 3 || idx === 5 || idx === 6" class="box">
+                    btw,
+                </div>
+                <div v-else="" class="box2">
+                    btw,
+                </div>
+            </div>
+        </div>
+       </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+       
+      },
+      mounted() {
+        
+      },
+      methods: {
+       
+      }
+    });
+  </script>
+</body>
+</html>

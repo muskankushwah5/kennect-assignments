@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Todo App</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    .todo-container {
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    .task {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5px 0;
+      padding: 5px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .task input {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <div class="todo-container">
+      <h2>Vue Todo App</h2>
+      <input v-model="newTask" placeholder="Add a new task" @keyup.enter="addTask">
+      <div v-for="(task, index) in tasks" :key="index" class="task">
+        <label>
+          <input type="checkbox" v-model="task.done" @change="toggleTaskStatus(index)">
+          {{ task.title }}
+        </label>
+        <button @click="deleteTask(index)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        newTask: '',
+        tasks: [],
+      },
+      mounted() {
+        if (localStorage.getItem('tasks')) {
+          this.tasks = JSON.parse(localStorage.getItem('tasks'));
+        }
+      },
+      methods: {
+        addTask() {
+          if (this.newTask.trim() === '') {
+            alert('Please enter a task title.');
+            return;
+          }
+
+          this.tasks.push({
+            title: this.newTask,
+            done: false,
+          });
+
+          localStorage.setItem('tasks', JSON.stringify(this.tasks));
+
+          this.newTask = '';
+        },
+        toggleTaskStatus(index) {
+          this.tasks[index].done = !this.tasks[index].done;
+
+          localStorage.setItem('tasks', JSON.stringify(this.tasks));
+        },
+        deleteTask(index) {
+          this.tasks.splice(index, 1);
+          localStorage.setItem('tasks', JSON.stringify(this.tasks));
+        },
+      }
+    });
+  </script>
+</body>
+</html>
