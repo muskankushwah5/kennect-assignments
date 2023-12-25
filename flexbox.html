@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Squares</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+        }
+
+        .containerExtreme {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            width: 100%;
+        }
+
+        .container2 {
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+            width: 100%;
+        }
+
+        .middleContainer{
+            display: flex;
+            flex-direction: row;
+        }
+
+        .main{
+            width: 100%;
+            height: 100%;
+        }
+
+        
+        .square1 {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 8px;
+            background-color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .square3 {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 8px;
+            background-color: pink;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .square4 {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 8px;
+            background-color: gold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .square2 {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f0f0f0;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .columnwise{
+            display: flex;
+            flex-direction: row;
+        }
+
+        .containerlast{
+           
+            justify-content: space-evenly;
+        }
+
+        /* Additional colors for variety */
+        .square1:nth-child(2n) {
+            background-color: #e74c3c;
+        }
+
+        .square1:nth-child(3n) {
+            background-color: #06481d;
+        }
+
+        .square1:nth-child(4n) {
+            background-color: #e3c18a;
+        }
+
+        .square3:nth-child(2n) {
+            background-color: #260a07;
+        }
+
+        .square3:nth-child(3n) {
+            background-color: #c5e3d2;
+        }
+
+        .square3:nth-child(4n) {
+            background-color: #40c9d0;
+        }
+
+        .square4:nth-child(2n) {
+            background-color: #434904;
+        }
+
+        .square4:nth-child(3n) {
+            background-color: #860b40;
+        }
+
+        .square4:nth-child(4n) {
+            background-color: #043e0b;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+    <div class="containerExtreme">
+        <div class="square1"></div>
+        <div class="square1"></div>
+    </div>
+    <div class="container">
+        <div class="square2"></div>
+        <div class="square2"></div>
+        <div class="square2"></div>
+        <div class="square2"></div>
+        <div class="square2"></div>
+        <div class="square2"></div>
+        <div class="square2"></div>
+        <div class="square2"></div>
+    </div>
+    <div class="columnwise">
+    <div class="container">
+        <div class="columnwise">
+            <div>
+                    <div class="square3"></div>
+                    <div class="square3"></div>
+            </div>
+            <div>
+                    <div class="square1"></div>
+                    <div class="square1"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="columnwise">
+            <div>
+                    <div class="square3"></div>
+                    <div class="square3"></div>
+            </div>
+            <div>
+                    <div class="square4"></div>
+                    <div class="square4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="container">
+        <div class="square2"></div>
+        <div class="square2"></div>
+        <div class="square2"></div>
+        <div class="square2"></div>
+        <div class="square2"></div>
+        <div class="square2"></div>
+        <div class="square2"></div>
+        <div class="square2"></div>
+    </div>
+    <div class="containerExtreme">
+        <div class="square3"></div>
+        <div class="square3"></div>
+    </div>
+</div>
+</body>
+</html>
