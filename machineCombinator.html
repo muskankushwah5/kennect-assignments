@@ -6,7 +6,7 @@
   <title>Machine Combinator</title>
   <style>
     body {
-      font-family:Abhaya Libre;
+      font-family: Abhaya Libre;
       margin: 0;
       padding: 0;
       background-color: #f5f5f5;
@@ -36,7 +36,7 @@
 
     th {
       background-color: #413f3f;
-      color:white;
+      color: white;
     }
 
     button {
@@ -93,6 +93,29 @@
         margin: 5px;
       }
     }
+
+    /* Added styles for loaded lists */
+    .loaded-lists-container {
+      text-align: left;
+      margin-top: 20px;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+    }
+
+    .loaded-list {
+      margin-bottom: 20px;
+    }
+
+    .loaded-list strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .loaded-list pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
   </style>
 </head>
 <body>
@@ -135,6 +158,10 @@
     <select id="savedLists"></select>
     <button onclick="downloadSelectedList()">Download</button>
     <button onclick="hideDownloadUI()">Close</button>
+
+    <h3>Saved and Downloaded Lists</h3>
+    <button onclick="loadSavedLists()">Load Lists</button>
+    <div id="loadedLists" class="loaded-lists-container"></div>
   </div>
 </div>
 
@@ -206,9 +233,6 @@
 
     const combinationsTable = document.getElementById('combinationsTable');
     combinationsTable.style.display = 'none';
-
-    saveButton.style.display = 'none';
-    downloadButton.style.display = 'none';
   }
 
   function showCombinations() {
@@ -217,9 +241,6 @@
 
     detailsContainer.style.display = 'none';
     combinationsTable.style.display = 'table';
-
-    saveButton.style.display = 'inline-block';
-    downloadButton.style.display = 'inline-block';
   }
 
   function saveCombinations() {
@@ -274,7 +295,7 @@
     const savedListsSelect = document.getElementById('savedLists');
     const selectedListKey = savedListsSelect.value;
     const selectedList = localStorage.getItem(selectedListKey);
-    
+
     const blob = new Blob([selectedList], { type: 'application/json' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
@@ -282,6 +303,27 @@
     link.click();
 
     hideDownloadUI();
+  }
+
+  function loadSavedLists() {
+    const loadedListsContainer = document.getElementById('loadedLists');
+    loadedListsContainer.innerHTML = '';
+
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key.startsWith('combinations_')) {
+        const list = localStorage.getItem(key);
+        const parsedList = JSON.parse(list);
+
+        const listContainer = document.createElement('div');
+        listContainer.classList.add('loaded-list');
+        listContainer.innerHTML = `
+          <strong>${key.replace('combinations_', '')}:</strong>
+          <pre>${JSON.stringify(parsedList, null, 2)}</pre>
+        `;
+        loadedListsContainer.appendChild(listContainer);
+      }
+    }
   }
 
   function hideDownloadUI() {
